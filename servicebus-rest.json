@@ -1,0 +1,863 @@
+{
+	"info": {
+		"_postman_id": "78c33ba4-b62e-45de-95c8-1dfb106e86ec",
+		"name": "Azure Service Bus REST",
+		"description": "Send and receive messages using the Service Bus Messaging API.    \n[Documentation ](https://docs.microsoft.com/en-us/rest/api/servicebus/service-bus-runtime-rest)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Management API",
+			"item": [
+				{
+					"name": "List SAS Keys",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bearerToken2}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "https://management.azure.com/subscriptions/{{subscriptionid}}/resourceGroups/{{rg}}/providers/Microsoft.ServiceBus/namespaces/{{servicebusNamespace}}/AuthorizationRules?api-version=2021-01-01-preview",
+							"protocol": "https",
+							"host": [
+								"management",
+								"azure",
+								"com"
+							],
+							"path": [
+								"subscriptions",
+								"{{subscriptionid}}",
+								"resourceGroups",
+								"{{rg}}",
+								"providers",
+								"Microsoft.ServiceBus",
+								"namespaces",
+								"{{servicebusNamespace}}",
+								"AuthorizationRules"
+							],
+							"query": [
+								{
+									"key": "api-version",
+									"value": "2021-01-01-preview"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create namespace",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bearerToken2}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"sku\": {\r\n    \"name\": \"Standard\",\r\n    \"tier\": \"Standard\"\r\n  },\r\n  \"location\": \"South Central US\",\r\n  \"tags\": {\r\n    \"tag1\": \"value1\",\r\n    \"tag2\": \"value2\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://management.azure.com/subscriptions/{{subscriptionid}}/resourceGroups/{{rg}}/providers/Microsoft.ServiceBus/namespaces/{{servicebusNamespace}}?api-version=2021-11-01",
+							"protocol": "https",
+							"host": [
+								"management",
+								"azure",
+								"com"
+							],
+							"path": [
+								"subscriptions",
+								"{{subscriptionid}}",
+								"resourceGroups",
+								"{{rg}}",
+								"providers",
+								"Microsoft.ServiceBus",
+								"namespaces",
+								"{{servicebusNamespace}}"
+							],
+							"query": [
+								{
+									"key": "api-version",
+									"value": "2021-11-01"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete namespace",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bearerToken2}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"sku\": {\r\n    \"name\": \"Standard\",\r\n    \"tier\": \"Standard\"\r\n  },\r\n  \"location\": \"South Central US\",\r\n  \"tags\": {\r\n    \"tag1\": \"value1\",\r\n    \"tag2\": \"value2\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://management.azure.com/subscriptions/{{subscriptionid}}resourceGroups/{{rg}}/providers/Microsoft.ServiceBus/namespaces/{{servicebusNamespace}}?api-version=2021-11-01",
+							"protocol": "https",
+							"host": [
+								"management",
+								"azure",
+								"com"
+							],
+							"path": [
+								"subscriptions",
+								"{{subscriptionid}}resourceGroups",
+								"{{rg}}",
+								"providers",
+								"Microsoft.ServiceBus",
+								"namespaces",
+								"{{servicebusNamespace}}"
+							],
+							"query": [
+								{
+									"key": "api-version",
+									"value": "2021-11-01"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get premium migration status",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bearerToken2}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://management.azure.com/subscriptions/{{subscriptionid}}/resourceGroups//{{rg}}/providers/Microsoft.ServiceBus/namespaces/{{servicebusNamespace}}/migrationConfigurations/$default?api-version=2017-04-01",
+							"protocol": "https",
+							"host": [
+								"management",
+								"azure",
+								"com"
+							],
+							"path": [
+								"subscriptions",
+								"{{subscriptionid}}",
+								"resourceGroups",
+								"",
+								"{{rg}}",
+								"providers",
+								"Microsoft.ServiceBus",
+								"namespaces",
+								"{{servicebusNamespace}}",
+								"migrationConfigurations",
+								"$default"
+							],
+							"query": [
+								{
+									"key": "ResourceGroupNameParameter",
+									"value": "Azure-Developer",
+									"disabled": true
+								},
+								{
+									"key": "api-version",
+									"value": "2017-04-01"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Revert premium migration",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Imwzc1EtNTBjQ0g0eEJWWkxIVEd3blNSNzY4MCIsImtpZCI6Imwzc1EtNTBjQ0g0eEJWWkxIVEd3blNSNzY4MCJ9.eyJhdWQiOiJodHRwczovL21hbmFnZW1lbnQuYXp1cmUuY29tIiwiaXNzIjoiaHR0cHM6Ly9zdHMud2luZG93cy5uZXQvZjhlNjA0MjgtYWExYi00N2M0LWI0Y2EtMTc4MmI0NWQ0ZWZiLyIsImlhdCI6MTYzNzE5MTk3NSwibmJmIjoxNjM3MTkxOTc1LCJleHAiOjE2MzcxOTU4NzUsImFpbyI6IkUyWmdZTEQxbXM0eW4zblI2OW9Jc1hYekovRG9Bd0E9IiwiYXBwaWQiOiJjZjY1N2U4Yi04ZGViLTQ2YjEtOTZhMC02YzVmYTYzZmQ2NWYiLCJhcHBpZGFjciI6IjEiLCJpZHAiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC9mOGU2MDQyOC1hYTFiLTQ3YzQtYjRjYS0xNzgyYjQ1ZDRlZmIvIiwib2lkIjoiYTAzYTJkZGMtODdhMC00OTc2LWFmMzEtNzMwMTQyYTg2ZTdhIiwicmgiOiIwLkFVWUFLQVRtLUJ1cXhFZTB5aGVDdEYxTy00dC1aY19yamJGR2xxQnNYNllfMWw5R0FBQS4iLCJzdWIiOiJhMDNhMmRkYy04N2EwLTQ5NzYtYWYzMS03MzAxNDJhODZlN2EiLCJ0aWQiOiJmOGU2MDQyOC1hYTFiLTQ3YzQtYjRjYS0xNzgyYjQ1ZDRlZmIiLCJ1dGkiOiJyOUxrak9KcjVVbTJlNEFsc1NCYkFBIiwidmVyIjoiMS4wIiwieG1zX3RjZHQiOjE1ODA4NDk5MTB9.fCvkl6AZcFdtacCi0fgw_bkKqUpiLjG5ftX-MwomBwSSQwFdcuG127odpF3HUbt_3qnFOqpu8UNd_5YTbrXtf9NZwIIGJU1jGtK6d3Vk6-hknIRmuhJgVV66ODWrnpykEb1Z0RlBVZjaCv7kSok17nYb8WuEDTpOmvsTRQ6S3_e8SXTc1cDsyiAOxiNETexjhnVM5ycGhsczVpHWMz-0-BywlsIQ_k4gPnJF20vmEj2rBdTX7t0mJ_mixTcjRhlv_uwaILFRefuHNeUxknCw0vponkrBt1xV8Mg0-U9N2I1WthRzWLran_NQ_sM5sG39q5J4_eMNPfQ9wBxnNgcUjg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "https://management.azure.com/subscriptions/{{subscriptionid}}/resourceGroups//{{rg}}/providers/Microsoft.ServiceBus/namespaces/{{servicebusNamespace}}/migrationConfigurations/$default/revert?api-version=2017-04-01",
+							"protocol": "https",
+							"host": [
+								"management",
+								"azure",
+								"com"
+							],
+							"path": [
+								"subscriptions",
+								"{{subscriptionid}}",
+								"resourceGroups",
+								"",
+								"{{rg}}",
+								"providers",
+								"Microsoft.ServiceBus",
+								"namespaces",
+								"{{servicebusNamespace}}",
+								"migrationConfigurations",
+								"$default",
+								"revert"
+							],
+							"query": [
+								{
+									"key": "ResourceGroupNameParameter",
+									"value": "Azure-Developer",
+									"disabled": true
+								},
+								{
+									"key": "api-version",
+									"value": "2017-04-01"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List queues",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bearerToken2}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://management.azure.com/subscriptions/{{subscriptionid}}/resourceGroups/{{rg}}/providers/Microsoft.ServiceBus/namespaces/{{servicebusNamespace}}/queues?api-version=2021-06-01-preview",
+							"protocol": "https",
+							"host": [
+								"management",
+								"azure",
+								"com"
+							],
+							"path": [
+								"subscriptions",
+								"{{subscriptionid}}",
+								"resourceGroups",
+								"{{rg}}",
+								"providers",
+								"Microsoft.ServiceBus",
+								"namespaces",
+								"{{servicebusNamespace}}",
+								"queues"
+							],
+							"query": [
+								{
+									"key": "api-version",
+									"value": "2021-06-01-preview"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Service APIs",
+			"item": [
+				{
+					"name": "Sending Messages bearer token ",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{bearerToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Test\":\"test\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{servicebusNamespace}}.servicebus.windows.net/{{queue}}/messages",
+							"protocol": "https",
+							"host": [
+								"{{servicebusNamespace}}",
+								"servicebus",
+								"windows",
+								"net"
+							],
+							"path": [
+								"{{queue}}",
+								"messages"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sending Messages SAS token ",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "SharedAccessSignature sr=azuredevbus.servicebus.windows.net%2fapimqueue&sig=ZETgm0T19WVrLWpT0xz799nR%2bW%2fiJ2s%2fCNiXR60IyZA%3d&se=1621635989&skn=RootManageSharedAccessKey",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\r\n\"Customer\": \"Pedro\"\r\n\r\n}"
+						},
+						"url": {
+							"raw": "https://{{servicebusNamespace}}.servicebus.windows.net/{{queue}}/messages",
+							"protocol": "https",
+							"host": [
+								"{{servicebusNamespace}}",
+								"servicebus",
+								"windows",
+								"net"
+							],
+							"path": [
+								"{{queue}}",
+								"messages"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Unlock Message",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Im5PbzNaRHJPRFhFSzFqS1doWHNsSFJfS1hFZyIsImtpZCI6Im5PbzNaRHJPRFhFSzFqS1doWHNsSFJfS1hFZyJ9.eyJhdWQiOiJodHRwczovL3NlcnZpY2VidXMuYXp1cmUubmV0IiwiaXNzIjoiaHR0cHM6Ly9zdHMud2luZG93cy5uZXQvZjhlNjA0MjgtYWExYi00N2M0LWI0Y2EtMTc4MmI0NWQ0ZWZiLyIsImlhdCI6MTYyNjA0OTczMCwibmJmIjoxNjI2MDQ5NzMwLCJleHAiOjE2MjYwNTM2MzAsImFpbyI6IkUyWmdZREQ0OWtEMmlrOTV3dTE5aTAxei8xM1pCd0E9IiwiYXBwaWQiOiJmODlmYmEzOC0xNzYyLTRkMDgtYWY5Ny03MzBiMGYxY2RlZjciLCJhcHBpZGFjciI6IjEiLCJpZHAiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC9mOGU2MDQyOC1hYTFiLTQ3YzQtYjRjYS0xNzgyYjQ1ZDRlZmIvIiwib2lkIjoiZTE1Zjc5YTEtNTVjOC00ZmZmLWJiZjMtZWU1YmZmOTg5Y2E4IiwicmgiOiIwLkFVWUFLQVRtLUJ1cXhFZTB5aGVDdEYxTy16aTZuX2hpRndoTnI1ZHpDdzhjM3ZkR0FBQS4iLCJzdWIiOiJlMTVmNzlhMS01NWM4LTRmZmYtYmJmMy1lZTViZmY5ODljYTgiLCJ0aWQiOiJmOGU2MDQyOC1hYTFiLTQ3YzQtYjRjYS0xNzgyYjQ1ZDRlZmIiLCJ1dGkiOiJtRFdIYkJidVpFT0pxWXFDVWxBb0FRIiwidmVyIjoiMS4wIn0.fRxbCDfgUZW649kfRewMy5AewX_VrNOITAHcLXijEpRRuDQzHgNn58OutFMb2I65ebpyBaXqWrpJZ65n2bfI7xfOYbjiyL7EVLKHXB-u1nf84HtLGnZvwqiZ-F8nOj216Y1E_dFJT2rPO09Fm-3APetFtt-VrJ2gUIsRnxTTrIJ3TbApUpI5FgE058NreFMs2VB01Qd077rBC9-5e86OpbTGhnaXy0EYXxBs-EY4nbT04CYl9tCPolejXO3rlPNTsaMV2lWlPUheBTZ3l0dfkR-2M6joryz-Y1KaxdRQ-urFDtPe3QXft0rpGHPPquzfDXfIz-W_2PN9GhNI7imu9w",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://{{servicebusNamespace}}.servicebus.windows.net/{{queue}}/messages/fc3383d3-4238-4423-bdff-bd0e9badb90a/7037b71a-9695-45b2-b37d-a28dbb5d73d0",
+							"protocol": "https",
+							"host": [
+								"{{servicebusNamespace}}",
+								"servicebus",
+								"windows",
+								"net"
+							],
+							"path": [
+								"{{queue}}",
+								"messages",
+								"fc3383d3-4238-4423-bdff-bd0e9badb90a",
+								"7037b71a-9695-45b2-b37d-a28dbb5d73d0"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Renew Lock",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Im5PbzNaRHJPRFhFSzFqS1doWHNsSFJfS1hFZyIsImtpZCI6Im5PbzNaRHJPRFhFSzFqS1doWHNsSFJfS1hFZyJ9.eyJhdWQiOiJodHRwczovL3NlcnZpY2VidXMuYXp1cmUubmV0IiwiaXNzIjoiaHR0cHM6Ly9zdHMud2luZG93cy5uZXQvZjhlNjA0MjgtYWExYi00N2M0LWI0Y2EtMTc4MmI0NWQ0ZWZiLyIsImlhdCI6MTYyNjA0OTczMCwibmJmIjoxNjI2MDQ5NzMwLCJleHAiOjE2MjYwNTM2MzAsImFpbyI6IkUyWmdZREQ0OWtEMmlrOTV3dTE5aTAxei8xM1pCd0E9IiwiYXBwaWQiOiJmODlmYmEzOC0xNzYyLTRkMDgtYWY5Ny03MzBiMGYxY2RlZjciLCJhcHBpZGFjciI6IjEiLCJpZHAiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC9mOGU2MDQyOC1hYTFiLTQ3YzQtYjRjYS0xNzgyYjQ1ZDRlZmIvIiwib2lkIjoiZTE1Zjc5YTEtNTVjOC00ZmZmLWJiZjMtZWU1YmZmOTg5Y2E4IiwicmgiOiIwLkFVWUFLQVRtLUJ1cXhFZTB5aGVDdEYxTy16aTZuX2hpRndoTnI1ZHpDdzhjM3ZkR0FBQS4iLCJzdWIiOiJlMTVmNzlhMS01NWM4LTRmZmYtYmJmMy1lZTViZmY5ODljYTgiLCJ0aWQiOiJmOGU2MDQyOC1hYTFiLTQ3YzQtYjRjYS0xNzgyYjQ1ZDRlZmIiLCJ1dGkiOiJtRFdIYkJidVpFT0pxWXFDVWxBb0FRIiwidmVyIjoiMS4wIn0.fRxbCDfgUZW649kfRewMy5AewX_VrNOITAHcLXijEpRRuDQzHgNn58OutFMb2I65ebpyBaXqWrpJZ65n2bfI7xfOYbjiyL7EVLKHXB-u1nf84HtLGnZvwqiZ-F8nOj216Y1E_dFJT2rPO09Fm-3APetFtt-VrJ2gUIsRnxTTrIJ3TbApUpI5FgE058NreFMs2VB01Qd077rBC9-5e86OpbTGhnaXy0EYXxBs-EY4nbT04CYl9tCPolejXO3rlPNTsaMV2lWlPUheBTZ3l0dfkR-2M6joryz-Y1KaxdRQ-urFDtPe3QXft0rpGHPPquzfDXfIz-W_2PN9GhNI7imu9w",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://{{servicebusNamespace}}.servicebus.windows.net/{{queue}}/messages/fc3383d3-4238-4423-bdff-bd0e9badb90a/d94376f0-a6ba-45ed-9411-930c6c2d7ddc",
+							"protocol": "https",
+							"host": [
+								"{{servicebusNamespace}}",
+								"servicebus",
+								"windows",
+								"net"
+							],
+							"path": [
+								"{{queue}}",
+								"messages",
+								"fc3383d3-4238-4423-bdff-bd0e9badb90a",
+								"d94376f0-a6ba-45ed-9411-930c6c2d7ddc"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Peek-Lock Message",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Im5PbzNaRHJPRFhFSzFqS1doWHNsSFJfS1hFZyIsImtpZCI6Im5PbzNaRHJPRFhFSzFqS1doWHNsSFJfS1hFZyJ9.eyJhdWQiOiJodHRwczovL3NlcnZpY2VidXMuYXp1cmUubmV0IiwiaXNzIjoiaHR0cHM6Ly9zdHMud2luZG93cy5uZXQvZjhlNjA0MjgtYWExYi00N2M0LWI0Y2EtMTc4MmI0NWQ0ZWZiLyIsImlhdCI6MTYyNjA0OTczMCwibmJmIjoxNjI2MDQ5NzMwLCJleHAiOjE2MjYwNTM2MzAsImFpbyI6IkUyWmdZREQ0OWtEMmlrOTV3dTE5aTAxei8xM1pCd0E9IiwiYXBwaWQiOiJmODlmYmEzOC0xNzYyLTRkMDgtYWY5Ny03MzBiMGYxY2RlZjciLCJhcHBpZGFjciI6IjEiLCJpZHAiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC9mOGU2MDQyOC1hYTFiLTQ3YzQtYjRjYS0xNzgyYjQ1ZDRlZmIvIiwib2lkIjoiZTE1Zjc5YTEtNTVjOC00ZmZmLWJiZjMtZWU1YmZmOTg5Y2E4IiwicmgiOiIwLkFVWUFLQVRtLUJ1cXhFZTB5aGVDdEYxTy16aTZuX2hpRndoTnI1ZHpDdzhjM3ZkR0FBQS4iLCJzdWIiOiJlMTVmNzlhMS01NWM4LTRmZmYtYmJmMy1lZTViZmY5ODljYTgiLCJ0aWQiOiJmOGU2MDQyOC1hYTFiLTQ3YzQtYjRjYS0xNzgyYjQ1ZDRlZmIiLCJ1dGkiOiJtRFdIYkJidVpFT0pxWXFDVWxBb0FRIiwidmVyIjoiMS4wIn0.fRxbCDfgUZW649kfRewMy5AewX_VrNOITAHcLXijEpRRuDQzHgNn58OutFMb2I65ebpyBaXqWrpJZ65n2bfI7xfOYbjiyL7EVLKHXB-u1nf84HtLGnZvwqiZ-F8nOj216Y1E_dFJT2rPO09Fm-3APetFtt-VrJ2gUIsRnxTTrIJ3TbApUpI5FgE058NreFMs2VB01Qd077rBC9-5e86OpbTGhnaXy0EYXxBs-EY4nbT04CYl9tCPolejXO3rlPNTsaMV2lWlPUheBTZ3l0dfkR-2M6joryz-Y1KaxdRQ-urFDtPe3QXft0rpGHPPquzfDXfIz-W_2PN9GhNI7imu9w",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://{{servicebusNamespace}}.servicebus.windows.net/{{queue}}/messages/head",
+							"protocol": "https",
+							"host": [
+								"{{servicebusNamespace}}",
+								"servicebus",
+								"windows",
+								"net"
+							],
+							"path": [
+								"{{queue}}",
+								"messages",
+								"head"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Message",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Im5PbzNaRHJPRFhFSzFqS1doWHNsSFJfS1hFZyIsImtpZCI6Im5PbzNaRHJPRFhFSzFqS1doWHNsSFJfS1hFZyJ9.eyJhdWQiOiJodHRwczovL3NlcnZpY2VidXMuYXp1cmUubmV0IiwiaXNzIjoiaHR0cHM6Ly9zdHMud2luZG93cy5uZXQvZjhlNjA0MjgtYWExYi00N2M0LWI0Y2EtMTc4MmI0NWQ0ZWZiLyIsImlhdCI6MTYyNjA0OTczMCwibmJmIjoxNjI2MDQ5NzMwLCJleHAiOjE2MjYwNTM2MzAsImFpbyI6IkUyWmdZREQ0OWtEMmlrOTV3dTE5aTAxei8xM1pCd0E9IiwiYXBwaWQiOiJmODlmYmEzOC0xNzYyLTRkMDgtYWY5Ny03MzBiMGYxY2RlZjciLCJhcHBpZGFjciI6IjEiLCJpZHAiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC9mOGU2MDQyOC1hYTFiLTQ3YzQtYjRjYS0xNzgyYjQ1ZDRlZmIvIiwib2lkIjoiZTE1Zjc5YTEtNTVjOC00ZmZmLWJiZjMtZWU1YmZmOTg5Y2E4IiwicmgiOiIwLkFVWUFLQVRtLUJ1cXhFZTB5aGVDdEYxTy16aTZuX2hpRndoTnI1ZHpDdzhjM3ZkR0FBQS4iLCJzdWIiOiJlMTVmNzlhMS01NWM4LTRmZmYtYmJmMy1lZTViZmY5ODljYTgiLCJ0aWQiOiJmOGU2MDQyOC1hYTFiLTQ3YzQtYjRjYS0xNzgyYjQ1ZDRlZmIiLCJ1dGkiOiJtRFdIYkJidVpFT0pxWXFDVWxBb0FRIiwidmVyIjoiMS4wIn0.fRxbCDfgUZW649kfRewMy5AewX_VrNOITAHcLXijEpRRuDQzHgNn58OutFMb2I65ebpyBaXqWrpJZ65n2bfI7xfOYbjiyL7EVLKHXB-u1nf84HtLGnZvwqiZ-F8nOj216Y1E_dFJT2rPO09Fm-3APetFtt-VrJ2gUIsRnxTTrIJ3TbApUpI5FgE058NreFMs2VB01Qd077rBC9-5e86OpbTGhnaXy0EYXxBs-EY4nbT04CYl9tCPolejXO3rlPNTsaMV2lWlPUheBTZ3l0dfkR-2M6joryz-Y1KaxdRQ-urFDtPe3QXft0rpGHPPquzfDXfIz-W_2PN9GhNI7imu9w",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://{{servicebusNamespace}}.servicebus.windows.net/{{queue}}/messages/fc3383d3-4238-4423-bdff-bd0e9badb90a/d94376f0-a6ba-45ed-9411-930c6c2d7ddc",
+							"protocol": "https",
+							"host": [
+								"{{servicebusNamespace}}",
+								"servicebus",
+								"windows",
+								"net"
+							],
+							"path": [
+								"{{queue}}",
+								"messages",
+								"fc3383d3-4238-4423-bdff-bd0e9badb90a",
+								"d94376f0-a6ba-45ed-9411-930c6c2d7ddc"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Receive and Delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Im5PbzNaRHJPRFhFSzFqS1doWHNsSFJfS1hFZyIsImtpZCI6Im5PbzNaRHJPRFhFSzFqS1doWHNsSFJfS1hFZyJ9.eyJhdWQiOiJodHRwczovL3NlcnZpY2VidXMuYXp1cmUubmV0IiwiaXNzIjoiaHR0cHM6Ly9zdHMud2luZG93cy5uZXQvZjhlNjA0MjgtYWExYi00N2M0LWI0Y2EtMTc4MmI0NWQ0ZWZiLyIsImlhdCI6MTYyNjA0OTczMCwibmJmIjoxNjI2MDQ5NzMwLCJleHAiOjE2MjYwNTM2MzAsImFpbyI6IkUyWmdZREQ0OWtEMmlrOTV3dTE5aTAxei8xM1pCd0E9IiwiYXBwaWQiOiJmODlmYmEzOC0xNzYyLTRkMDgtYWY5Ny03MzBiMGYxY2RlZjciLCJhcHBpZGFjciI6IjEiLCJpZHAiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC9mOGU2MDQyOC1hYTFiLTQ3YzQtYjRjYS0xNzgyYjQ1ZDRlZmIvIiwib2lkIjoiZTE1Zjc5YTEtNTVjOC00ZmZmLWJiZjMtZWU1YmZmOTg5Y2E4IiwicmgiOiIwLkFVWUFLQVRtLUJ1cXhFZTB5aGVDdEYxTy16aTZuX2hpRndoTnI1ZHpDdzhjM3ZkR0FBQS4iLCJzdWIiOiJlMTVmNzlhMS01NWM4LTRmZmYtYmJmMy1lZTViZmY5ODljYTgiLCJ0aWQiOiJmOGU2MDQyOC1hYTFiLTQ3YzQtYjRjYS0xNzgyYjQ1ZDRlZmIiLCJ1dGkiOiJtRFdIYkJidVpFT0pxWXFDVWxBb0FRIiwidmVyIjoiMS4wIn0.fRxbCDfgUZW649kfRewMy5AewX_VrNOITAHcLXijEpRRuDQzHgNn58OutFMb2I65ebpyBaXqWrpJZ65n2bfI7xfOYbjiyL7EVLKHXB-u1nf84HtLGnZvwqiZ-F8nOj216Y1E_dFJT2rPO09Fm-3APetFtt-VrJ2gUIsRnxTTrIJ3TbApUpI5FgE058NreFMs2VB01Qd077rBC9-5e86OpbTGhnaXy0EYXxBs-EY4nbT04CYl9tCPolejXO3rlPNTsaMV2lWlPUheBTZ3l0dfkR-2M6joryz-Y1KaxdRQ-urFDtPe3QXft0rpGHPPquzfDXfIz-W_2PN9GhNI7imu9w",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://{{servicebusNamespace}}.servicebus.windows.net/{{queue}}/messages/head",
+							"protocol": "https",
+							"host": [
+								"{{servicebusNamespace}}",
+								"servicebus",
+								"windows",
+								"net"
+							],
+							"path": [
+								"{{queue}}",
+								"messages",
+								"head"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Enumeration",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "SharedAccessSignature sr=azuredevbus.servicebus.windows.net&sig=D1X7pMpiOEqPPrP%2fKxddXC73YyKOOWZrQkjxDOvWp50%3d&se=1627079446&skn=RootManageSharedAccessKey",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\r\n\"Customer\": \"Pedro\"\r\n\r\n}"
+						},
+						"url": {
+							"raw": "https://{{servicebusNamespace}}.servicebus.windows.net/$Resources/all",
+							"protocol": "https",
+							"host": [
+								"{{servicebusNamespace}}",
+								"servicebus",
+								"windows",
+								"net"
+							],
+							"path": [
+								"$Resources",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sending Messages Batching",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Im5PbzNaRHJPRFhFSzFqS1doWHNsSFJfS1hFZyIsImtpZCI6Im5PbzNaRHJPRFhFSzFqS1doWHNsSFJfS1hFZyJ9.eyJhdWQiOiJodHRwczovL3NlcnZpY2VidXMuYXp1cmUubmV0IiwiaXNzIjoiaHR0cHM6Ly9zdHMud2luZG93cy5uZXQvZjhlNjA0MjgtYWExYi00N2M0LWI0Y2EtMTc4MmI0NWQ0ZWZiLyIsImlhdCI6MTYyNjA1MDkxNSwibmJmIjoxNjI2MDUwOTE1LCJleHAiOjE2MjYwNTQ4MTUsImFpbyI6IkUyWmdZR2lmWnRiU3ZjNTBkdk9PUk43a3puZTdBUT09IiwiYXBwaWQiOiJmODlmYmEzOC0xNzYyLTRkMDgtYWY5Ny03MzBiMGYxY2RlZjciLCJhcHBpZGFjciI6IjEiLCJpZHAiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC9mOGU2MDQyOC1hYTFiLTQ3YzQtYjRjYS0xNzgyYjQ1ZDRlZmIvIiwib2lkIjoiZTE1Zjc5YTEtNTVjOC00ZmZmLWJiZjMtZWU1YmZmOTg5Y2E4IiwicmgiOiIwLkFVWUFLQVRtLUJ1cXhFZTB5aGVDdEYxTy16aTZuX2hpRndoTnI1ZHpDdzhjM3ZkR0FBQS4iLCJzdWIiOiJlMTVmNzlhMS01NWM4LTRmZmYtYmJmMy1lZTViZmY5ODljYTgiLCJ0aWQiOiJmOGU2MDQyOC1hYTFiLTQ3YzQtYjRjYS0xNzgyYjQ1ZDRlZmIiLCJ1dGkiOiJFLXZ4ZEtCYk5VV0dYRG8xOTdUWUFBIiwidmVyIjoiMS4wIn0.eIaCbHYvSSoWWd1HXryk-bvLnhtrCUJaJAuQeS4kdYfk-aulqGtGnTvpzIzL2bMTdQLtJ17ku5ZFvqmdJ-sRgTJd6kHXOgQO4ZFnjQJrwvz1RwPjwuCrgBVM83yOKtndhD3thpAS-XUMVD6XkOnFTCdkAiVwNdwi5d4Ko3Ak9QEDA77ooV4ahHp2AIfBZU00JrVV_G5Taq0w4ZvX_vOptuYe0YyhLsQvSq8Uq3IkYQwq5UNZLX1Y0MtamLjL9RW5eOOU4i8kiRUCvfrvyfGmF-kpbGIrXtvGXdD_lK3mqwUuN0W4g9Jrz4eC7aFcyFRJSWb1z7TukGcS7IkhTbsLjA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.microsoft.servicebus.json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\r\n[  \r\n  {  \r\n    \"Body\":”This is the first message\",  \r\n    \"BrokerProperties\":{\"Label\":\"M1\",\"TimeToLiveTimeSpan\":\"0.00:00:40\"}  \r\n  },  \r\n  {  \r\n    \"Body\":”This is the second message\",  \r\n    \"BrokerProperties\":{\"Label\":\"M2\"},  \r\n    \"UserProperties\":{\"Priority\":\"Low\"}  \r\n  },  \r\n  {  \r\n    \"Body\":”This is the third message\",  \r\n    \"BrokerProperties\":{\"Label\":\"M3\"},  \r\n    \"UserProperties\":{\"Priority\":\"Medium\",\"Customer\":\"ABC\"}  \r\n  }  \r\n]  \r\n  \r\n\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "text"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{servicebusNamespace}}.servicebus.windows.net/{{queue}}/messages?timeout=60 HTTP/1.1",
+							"protocol": "https",
+							"host": [
+								"{{servicebusNamespace}}",
+								"servicebus",
+								"windows",
+								"net"
+							],
+							"path": [
+								"{{queue}}",
+								"messages"
+							],
+							"query": [
+								{
+									"key": "timeout",
+									"value": "60 HTTP/1.1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Receive and Delete Message",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{sasToken}}",
+								"description": "SAS token generated in pre-request script in collection"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/atom+xml;type=entry;charset=utf-8"
+							},
+							{
+								"key": "BrokerProperties",
+								"value": "null",
+								"description": "JSON-encoded set of BrokeredMessage properties"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{{servicebusNamespace}}.servicebus.windows.net/{{topic}}/subscriptions/{{subscription}}/messages/head",
+							"protocol": "https",
+							"host": [
+								"{{servicebusNamespace}}",
+								"servicebus",
+								"windows",
+								"net"
+							],
+							"path": [
+								"{{topic}}",
+								"subscriptions",
+								"{{subscription}}",
+								"messages",
+								"head"
+							]
+						},
+						"description": "This operation receives a message from a queue or subscription, and removes the message from that queue or subscription in one atomic operation.    \n[Documentation](https://docs.microsoft.com/en-us/rest/api/servicebus/receive-and-delete-message-destructive-read)"
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"",
+					"    pm.environment.set(\"tenantId\", \"\");",
+					"    pm.environment.set(\"client_credentials\", \"client_credentials\");",
+					"    pm.environment.set(\"clientId\", \"\");",
+					"    pm.environment.set(\"clientSecret\", \"\");",
+					"    pm.environment.set(\"scope\", \"https://servicebus.azure.net/.default\");",
+					"",
+					"    pm.environment.set(\"clientId_management\", \"\");",
+					"    pm.environment.set(\"scope_management\", \"https://management.azure.com/.default\");",
+					"    pm.environment.set(\"clientSecret_management\", \"\");",
+					"",
+					"",
+					"    pm.sendRequest({",
+					"            url: 'https://login.microsoftonline.com/' + pm.environment.get(\"tenantId\") + '/oauth2/v2.0/token',",
+					"            method: 'POST',",
+					"            header: 'Content-Type: application/x-www-form-urlencoded',",
+					"            body: {",
+					"                mode: 'urlencoded',",
+					"                urlencoded: [ ",
+					"                    {key: \"grant_type\", value: \"client_credentials\", disabled: false},",
+					"                    {key: \"client_id\", value: pm.environment.get(\"clientId\"), disabled: false},",
+					"                    {key: \"client_secret\", value: pm.environment.get(\"clientSecret\"), disabled: false},",
+					"                    {key: \"scope\", value: pm.environment.get(\"scope\"), disabled: false}",
+					"                ]",
+					"            }",
+					"        }, function (err, res) {",
+					"            pm.globals.set(\"bearerToken\", res.json().access_token);",
+					"            console.log(pm.globals.get(\"bearerToken\"));",
+					"        });",
+					"",
+					"        pm.sendRequest({",
+					"            url: 'https://login.microsoftonline.com/' + pm.environment.get(\"tenantId\") + '/oauth2/v2.0/token',",
+					"            method: 'POST',",
+					"            header: 'Content-Type: application/x-www-form-urlencoded',",
+					"            body: {",
+					"                mode: 'urlencoded',",
+					"                urlencoded: [ ",
+					"                    {key: \"grant_type\", value: \"client_credentials\", disabled: false},",
+					"                    {key: \"client_id\", value: pm.environment.get(\"clientId_management\"), disabled: false},",
+					"                    {key: \"client_secret\", value: pm.environment.get(\"clientSecret_management\"), disabled: false},",
+					"                    {key: \"scope\", value: pm.environment.get(\"scope_management\"), disabled: false}",
+					"                ]",
+					"            }",
+					"        }, function (err, res) {",
+					"            pm.globals.set(\"bearerToken2\", res.json().access_token);",
+					"            console.log(pm.globals.get(\"bearerToken2\"));",
+					"        });",
+					"",
+					"",
+					"       "
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "servicebusNamespace",
+			"value": "Service Bus Namespace Name"
+		},
+		{
+			"key": "queue",
+			"value": "Queue",
+			"type": "string"
+		},
+		{
+			"key": "topic",
+			"value": "Topic",
+			"type": "string"
+		},
+		{
+			"key": "subscriptionid",
+			"value": "Subscription",
+			"type": "string"
+		},
+		{
+			"key": "rg",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
